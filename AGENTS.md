@@ -21,3 +21,4 @@
 - Keep factual verification separate from language editing. If a substantive concern arises, record it separately rather than silently weakening or changing the author's claims. Do not invent claims or amplify certainty beyond the source.
 - Use Lark consistently in English prose and captions. The owner requested English translations of Chinese screenshot text; preserve the original image copies.
 - When adapting an answer, include the original question's title in English in the “Adapted from…” attribution, link it to the original answer, and retain the original publication date.
+- Keep figure captions, alt text, and accessible link labels focused on the image's content. Omit translation and editing process remarks such as “English adaptation of the original diagram”; keep those details in editorial notes. Preserve artist credits and source attribution.

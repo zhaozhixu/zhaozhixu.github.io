@@ -149,8 +149,8 @@ The useful next step is to inspect and edit the relevant source, then evaluate t
 A Markdown preview command was a concrete example. I liked how agent-shell displayed tables and code, and wanted the same rendering for ordinary Markdown files. I reused its renderer in a preview command: `C-c p` opened a read-only preview, `g` refreshed it, and `q` returned to the source.
 
 <figure class="article-figure">
-  <a href="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-markdown-en.png" target="_blank" rel="noopener" aria-label="Open full-size image: My Markdown preview reuses agent-shell’s rendering for tables, code, and text layout. The original Chinese text is translated here. (new tab)">
-    <img src="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-markdown-en.png" alt="Two Emacs Markdown preview panes showing formatted tables, Lisp and Python code blocks, and checklist items, with the original Chinese text translated into English." width="1727" height="911" loading="lazy" decoding="async" />
+  <a href="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-markdown-en.png" target="_blank" rel="noopener" aria-label="Open full-size image: My Markdown preview reuses agent-shell’s rendering for tables, code, and text layout. (new tab)">
+    <img src="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-markdown-en.png" alt="Two Emacs Markdown preview panes showing formatted tables, Lisp and Python code blocks, and checklist items." width="1727" height="911" loading="lazy" decoding="async" />
   </a>
   <figcaption>My Markdown preview reuses agent-shell’s rendering for tables, code, and text layout.</figcaption>
 </figure>
@@ -176,8 +176,8 @@ Emacs, agent-shell, and DSH have shown me just how powerful the combination of o
 When the user is also the developer, software productivity reaches its pinnacle.
 
 <figure class="article-figure article-figure--small">
-  <a href="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-gnu.jpg" target="_blank" rel="noopener" aria-label="Open full-size image: The GNU head illustration that closes the original article. (new tab)">
+  <a href="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-gnu.jpg" target="_blank" rel="noopener" aria-label="Open full-size GNU head illustration (new tab)">
     <img src="/images/writing/emacs-is-my-ai-coding-workbench/emacs-workbench-gnu.jpg" alt="Black-and-white illustration of a GNU head with curved horns." width="535" height="523" loading="lazy" decoding="async" />
   </a>
-  <figcaption>The GNU head illustration that closes the original article.</figcaption>
+  <figcaption>The GNU head.</figcaption>
 </figure>
