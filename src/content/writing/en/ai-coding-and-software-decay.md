@@ -379,4 +379,4 @@ Lisp really is a lighthouse, always out ahead of the other languages.
 
 > Lately I have been adding features to agent-shell in Emacs. It is such a pleasure. An Elisp REPL: change code live, inspect state live, reload it live. Hard to believe I am saying this about a 1970s application written in a language from the 1960s. I later wrote about that experience in [*Emacs Is My AI Coding Workbench*](/writing/emacs-is-my-ai-coding-workbench/).
 
-**Update:** I have since written a tool for live programming in Python. Give it a try: [*pyvivo: Live Programming in Python*](https://zhuanlan.zhihu.com/p/2067202576785974584) (in Chinese).
+**Update:** I have since written a tool for live programming in Python. Give it a try: [*Live Programming in Python with pyvivo*](/writing/pyvivo-live-programming-in-python/).
