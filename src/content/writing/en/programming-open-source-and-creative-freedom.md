@@ -53,7 +53,7 @@ Where do those needs come from? Thinkers from Marx to Maslow have pointed out th
 
 Tragically, under present conditions, most work is becoming alienated. People often cannot fulfill their need for self-realization through their jobs. Instead, pressures inherited from the feudal past—homeownership and patriarchal family obligations, for example—join forces with capital's pursuit of surplus value to squeeze them from both sides. They are forced to work simply to get through life. Meanwhile, impoverished regions where even basic physical needs remain unmet are routinely ignored because the people there cannot pay.
 
-It is 2026, and AGI has already been declared to have arrived. But can our existing, suppressed needs really absorb AI's immense productive capacity? And once those needs are liberated, can closed-source AI controlled by large corporations truly meet humanity's need for free development?
+It is 2026, and AGI has already been declared to [“have arrived”](https://www.forrester.com/blogs/agi-has-arrived-but-its-just-barely-competent/). But can our existing, suppressed needs really absorb AI's immense productive capacity? And once those needs are liberated, can closed-source AI controlled by large corporations truly meet humanity's need for free development?
 
 History has already shown us.
 
@@ -61,11 +61,11 @@ History has already shown us.
 
 In computing, the free software movement that began in the 1980s, and the open-source movement it helped give rise to, were early signs that the need for self-realization could not be contained. They are also hard evidence of open source's power to advance human society:
 
-- In 1983, Richard Stallman launched the GNU free software movement: software shared by the community, freely distributed, with contributions guaranteed to flow back.
-- In 1991, Linus Torvalds released the Linux operating system on the foundation of GNU licensing and free software.
-- On April 30, 1993, CERN relinquished its patent rights to the World Wide Web, opening it to everyone, free of charge, forever.
-- Around 2000, Linux—free of charge and excellent in performance—began growing explosively in the server market.
-- In 2007, the FreeBSD-based iOS system appeared; in 2008, Linux-based Android followed. The mobile internet finally found its way into everyone's hands.
+- In 1983, Richard Stallman [announced GNU](https://www.gnu.org/gnu/initial-announcement.html), launching the free software movement: a community built on the freedom to use, study, modify, and share software, with copyleft ensuring that distributed derivatives preserve those freedoms.
+- In 1991, Linus Torvalds developed the Linux kernel. In 1992, he [rereleased it under the GNU GPL](https://www.gnu.org/gnu/gnu-linux-faq.html#linuxalone), making it free software and allowing it to complete the GNU system.
+- On April 30, 1993, CERN [put its World Wide Web software in the public domain](https://home.cern/science/computing/the-birth-of-the-web/where-web-was-born/), making it freely available for anyone to use and improve.
+- Around 2000, Linux was [expanding rapidly across web servers](https://www.redhat.com/en/about/press-releases/press-globaluse) and [entering enterprise systems](https://newsroom.ibm.com/Thirteen-Months-That-Changed-IBM).
+- In 2007, the iPhone arrived with the system later named iOS, built on Darwin and the [XNU kernel, which combines Mach with FreeBSD components and IOKit](https://github.com/apple-oss-distributions/xnu/blob/main/README.md). In 2008, Linux-based Android followed, and Google [released its source code](https://android-developers.googleblog.com/2008/10/android-is-now-open-source.html). The mobile internet finally found its way into everyone's hands.
 
 Programmers, especially open-source programmers, may be among the professions with the greatest revolutionary potential today. They are among those closest to common ownership of the means of production—open-source code—and material abundance, because their means of production are so cheap.
 
@@ -75,7 +75,7 @@ From GNU and Linux onward, open-source software ushered in the internet age. Dri
 
 AI, born from the internet age, releases more of this productive potential. It lowers the barrier between user and developer, making it easier for people to build tools that meet their own needs. If we nurture this spark and let it catch fire, humanity will enter an unprecedented period of development driven by individual needs.
 
-Unfortunately, in China and elsewhere, AI is still dominated by closed-source models controlled by large companies—which makes DeepSeek all the more precious. On the other side, people remain constrained by alienated work, corporate monopolies, and the lingering pull of feudal social structures. They have yet to recognize the potential of their own need for self-realization.
+Unfortunately, in China and elsewhere, much of frontier AI is still controlled by large companies and delivered through closed models—which makes [DeepSeek's openly released work](https://github.com/deepseek-ai) all the more precious. On the other side, people remain constrained by alienated work, corporate monopolies, and the lingering pull of feudal social structures. They have yet to recognize the potential of their own need for self-realization.
 
 Mass-market products from large companies will never satisfy everyone's individual needs, just as the commercial software of the last century could not satisfy hackers' urge to create. Start by looking for your own needs. Find them and meet them. Then look for people who feel the same way.
 
