@@ -14,7 +14,7 @@ originalPublishedAt: 2026-08-02
 adaptedFrom: "The author's Chinese Zhihu answer introducing pyvivo and live programming in Python, published as Favoryoung."
 ---
 
-*Adapted from [my Chinese answer on Zhihu](https://www.zhihu.com/question/27376156/answer/2067252272313152605), originally published on August 2, 2026.*
+*Adapted from my Chinese answer on Zhihu to [“What are some clever Python tricks?”](https://www.zhihu.com/question/27376156/answer/2067252272313152605), originally published on August 2, 2026.*
 
 Imagine a Python service—or a large-model training job—that has been running for three days. Its memory holds a state you finally managed to reproduce after a great deal of effort. Then you discover a bug in one function. The usual workflow is to change the code, restart, and pray that the strange state builds up again. Most likely, it never will.
 

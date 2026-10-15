@@ -1,5 +1,8 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 export type Article = CollectionEntry<"writing">;
+export function articleDate(article: Article) {
+  return article.data.originalPublishedAt ?? article.data.publishedAt;
+}
 export function articlePath(article: Article) {
   return `${article.data.lang === "zh" ? "/zh" : ""}/writing/${article.data.slug}/`;
 }
@@ -25,6 +28,6 @@ export async function publishedWriting(lang?: "en" | "zh") {
         (!lang || data.lang === lang),
     )
     .sort(
-      (a, b) => b.data.publishedAt!.valueOf() - a.data.publishedAt!.valueOf(),
+      (a, b) => articleDate(b)!.valueOf() - articleDate(a)!.valueOf(),
     );
 }

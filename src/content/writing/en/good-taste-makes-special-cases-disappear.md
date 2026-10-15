@@ -14,7 +14,7 @@ originalPublishedAt: 2026-08-08
 adaptedFrom: "The author's Chinese Zhihu answer about programming taste, published as Favoryoung."
 ---
 
-*Adapted from [my Chinese answer on Zhihu](https://www.zhihu.com/question/2066610730116421630/answer/2069433686110496569), originally published on August 8, 2026.*
+*Adapted from my Chinese answer on Zhihu to [“Jeff Dean says that as AI agents write code, taste is becoming a scarce skill. What does ‘taste’ mean to you?”](https://www.zhihu.com/question/2066610730116421630/answer/2069433686110496569), originally published on August 8, 2026.*
 
 When we talk about good taste in code, we can do more than trade abstract principles. There is a famous, concrete example from [Linus Torvalds’s 2016 TED interview](https://www.ted.com/talks/linus_torvalds_the_mind_behind_linux), at around 14:10. He dislikes giving talks, so he had the organizers make it an interview instead. The perks of being Linus.
 

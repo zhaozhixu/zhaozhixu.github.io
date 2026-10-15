@@ -15,7 +15,7 @@ originalPublishedAt: 2026-10-02
 adaptedFrom: "The author's Chinese Zhihu answer about Emacs and vibe coding, published as Favoryoung."
 ---
 
-*Adapted and expanded from [my Chinese article on Zhihu](https://www.zhihu.com/question/1994448074693703059/answer/2089319423228356183), originally published on October 2, 2026.*
+*Adapted and expanded from my Chinese answer on Zhihu to [“In the age of vibe coding, are Emacs users about to go extinct?”](https://www.zhihu.com/question/1994448074693703059/answer/2089319423228356183), originally published on October 2, 2026.*
 
 Emacs has become my AI coding workbench. I use it to work with coding agents, but also to change the environment in which those agents and I work. That second part has become increasingly useful.
 

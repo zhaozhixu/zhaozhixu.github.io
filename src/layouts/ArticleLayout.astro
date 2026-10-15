@@ -4,10 +4,11 @@ import BaseLayout from './BaseLayout.astro';
 import Container from '@/components/Container.astro';
 import LanguageSwitch from '@/components/LanguageSwitch.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
-import { publishedWriting, articlePath, formatDate, type Article } from '@/lib/writing';
+import { publishedWriting, articleDate, articlePath, formatDate, type Article } from '@/lib/writing';
 interface Props { article: Article; preview?: boolean; }
 const { article, preview = false } = Astro.props;
 const { data } = article;
+const date = articleDate(article);
 const { Content, headings } = await render(article);
 const sections = headings.filter(({ depth }) => depth === 2 || depth === 3);
 const showContents = sections.length > 1;
@@ -17,7 +18,7 @@ const translation = !preview && data.translationKey
   : undefined;
 const alternates = translation ? [article, translation].map((item) => ({ lang: item.data.lang === 'zh' ? 'zh-CN' : 'en', href: articlePath(item) })) : [];
 ---
-<BaseLayout title={data.title} description={data.description} lang={data.lang} noindex={preview} type="article" publishedAt={preview ? undefined : data.publishedAt} updatedAt={data.updatedAt} alternates={alternates}>
+<BaseLayout title={data.title} description={data.description} lang={data.lang} noindex={preview} type="article" publishedAt={preview ? undefined : date} updatedAt={data.updatedAt} alternates={alternates}>
   <Container>
     {preview && <div class="draft-notice"><strong>Local draft preview.</strong> Unpublished; excluded from the production site. <a href="/preview/">All drafts</a></div>}
     <div class="article-layout">
@@ -31,7 +32,7 @@ const alternates = translation ? [article, translation].map((item) => ({ lang: i
       <p class="eyebrow">{data.lang === 'zh' ? '文章' : 'Writing'}</p>
       <h1 class="article-title">{data.title}</h1>
       <p class="page-description">{data.description}</p>
-      {!preview && data.publishedAt && <p class="article-meta"><time datetime={data.publishedAt.toISOString()}>{formatDate(data.publishedAt, data.lang)}</time>{data.updatedAt && <> · Updated <time datetime={data.updatedAt.toISOString()}>{formatDate(data.updatedAt, data.lang)}</time></>}</p>}
+      {date && <p class="article-meta"><time datetime={date.toISOString()}>{formatDate(date, data.lang)}</time>{data.updatedAt && <> · Updated <time datetime={data.updatedAt.toISOString()}>{formatDate(data.updatedAt, data.lang)}</time></>}</p>}
       {data.tags.length > 0 && <ul class="topics">{data.tags.map((tag) => <li>{tag}</li>)}</ul>}
     </div>
     {translation && <LanguageSwitch href={articlePath(translation)} lang={translation.data.lang} />}

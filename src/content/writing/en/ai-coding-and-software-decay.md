@@ -14,7 +14,7 @@ originalPublishedAt: 2026-07-24
 adaptedFrom: "The author's Chinese Zhihu answer about AI coding and software decay, published as Favoryoung."
 ---
 
-*Adapted from [my Chinese answer on Zhihu](https://www.zhihu.com/question/2061736961354774298/answer/2064027740009928302), originally published on July 24, 2026.*
+*Adapted from my Chinese answer on Zhihu to [“Why has AI only improved programmers’ productivity by 30%, even though it writes code far faster than humans?”](https://www.zhihu.com/question/2061736961354774298/answer/2064027740009928302), originally published on July 24, 2026.*
 
 Because software is rotting faster too.
 

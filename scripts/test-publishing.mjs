@@ -55,7 +55,7 @@ try {
   await writeFile(join(media, "qa-private-image.jpg"), "private-image-fixture");
   await writeFile(join(media, "qa-private-image.png"), "private-png-fixture");
   const approved =
-    "draft: false\npublishedAt: 2025-01-02\ntranslationKey: bilingual-fixture";
+    "draft: false\npublishedAt: 2025-01-02\noriginalPublishedAt: 2023-02-03\ntranslationKey: bilingual-fixture";
   await writeFile(
     join(content, "en/qa-public.md"),
     fixture("en", "qa-public", approved),
@@ -65,8 +65,16 @@ try {
     fixture("zh", "qa-public", approved),
   );
   await writeFile(
+    join(content, "en/qa-archived.md"),
+    fixture("en", "qa-archived", "draft: false\npublishedAt: 2025-03-04\noriginalPublishedAt: 2020-04-05"),
+  );
+  await writeFile(
+    join(content, "en/qa-native.md"),
+    fixture("en", "qa-native", "draft: false\npublishedAt: 2024-05-06"),
+  );
+  await writeFile(
     join(content, "en/qa-draft.md"),
-    fixture("en", "qa-private-sentinel", "draft: true") +
+    fixture("en", "qa-private-sentinel", "draft: true\noriginalPublishedAt: 2024-01-01") +
       '\n<img src="/preview/media/qa-private-image.jpg" alt="Local JPEG draft fixture" />\n' +
       '\n<img src="/preview/media/qa-private-image.png" alt="Local PNG draft fixture" />\n',
   );
@@ -76,7 +84,7 @@ try {
   );
   await writeFile(
     join(content, "en/qa-future.md"),
-    fixture("en", "qa-future", "draft: false\npublishedAt: 2999-01-01"),
+    fixture("en", "qa-future", "draft: false\npublishedAt: 2999-01-01\noriginalPublishedAt: 2010-01-01"),
   );
   build();
   const output = join(scratch, "dist");
@@ -92,9 +100,30 @@ try {
     en.includes('hreflang="zh-CN"') && en.includes("/zh/writing/qa-public/"),
   );
   assert(zh.includes('hreflang="en"') && zh.includes('lang="zh-CN"'));
-  assert(en.includes("2025-01-02T00:00:00.000Z"));
+  assert.match(en, /<time datetime="2023-02-03T00:00:00\.000Z"[^>]*>Feb 3, 2023<\/time>/);
+  assert(en.includes('property="article:published_time" content="2023-02-03T00:00:00.000Z"'));
+  assert(!en.includes("2025-01-02T00:00:00.000Z"));
+  assert.match(zh, /<time datetime="2023-02-03T00:00:00\.000Z"[^>]*>2023年2月3日<\/time>/);
+  const native = await readFile(join(output, "writing/qa-native/index.html"), "utf8");
+  assert.match(native, /<time datetime="2024-05-06T00:00:00\.000Z"[^>]*>May 6, 2024<\/time>/);
+  for (const page of ["index.html", "writing/index.html"]) {
+    const html = await readFile(join(output, page), "utf8");
+    const slugs = [...html.matchAll(/href="\/writing\/(qa-[^/]+)\/"/g)].map((match) => match[1]);
+    assert.deepEqual(slugs, ["qa-native", "qa-public", "qa-archived"], `${page} must use original dates for ordering.`);
+    for (const date of ["May 6, 2024", "Feb 3, 2023", "Apr 5, 2020"]) {
+      assert(html.includes(date), `${page} is missing article date ${date}.`);
+    }
+    assert(!html.includes("qa-private-sentinel") && !html.includes("qa-future"));
+  }
   const rss = await readFile(join(output, "rss.xml"), "utf8");
-  assert.equal((rss.match(/<item>/g) || []).length, 2);
+  assert.equal((rss.match(/<item>/g) || []).length, 4);
+  const rssDates = [...rss.matchAll(/<pubDate>([^<]+)<\/pubDate>/g)].map((match) => new Date(match[1]).toISOString());
+  assert.deepEqual(rssDates, [
+    "2024-05-06T00:00:00.000Z",
+    "2023-02-03T00:00:00.000Z",
+    "2023-02-03T00:00:00.000Z",
+    "2020-04-05T00:00:00.000Z",
+  ]);
   assert(
     rss.includes("/writing/qa-public/") &&
       rss.includes("/zh/writing/qa-public/"),
@@ -123,7 +152,7 @@ try {
   });
   await writeFile(
     join(content, "en/qa-invalid.md"),
-    fixture("en", "qa-invalid", "draft: false"),
+    fixture("en", "qa-invalid", "draft: false\noriginalPublishedAt: 2020-01-01"),
   );
   let invalidOutput = "";
   try {
@@ -138,7 +167,7 @@ try {
     "An undated published article must fail validation.",
   );
   console.log(
-    "Publishing checks passed: bilingual routes, translation links, RSS dates, draft defaults, future-date exclusion, no preview output, required publication dates.",
+    "Publishing checks passed: bilingual routes, translation links, original dates and ordering, date fallback, draft defaults, future-date exclusion, no preview output, required publication dates.",
   );
 } finally {
   await rm(scratch, { recursive: true, force: true });

@@ -70,3 +70,15 @@ The owner approved the reviewed pyvivo translation for commit, build, and push. 
 - [Ron Garret's firsthand account](https://flownet.com/gat/jpl-lisp.html) and [interview](https://corecursive.com/lisp-in-space-with-ron-garret/): the 1999 Deep Space 1 experiment, remote REPL, race condition, and quotation. The interview describes injecting an event to unblock the session; the translation says the team fixed it in place without asserting a particular code patch.
 
 At the pinned revision, `python3 -m unittest discover -s tests` on macOS with CPython 3.14.3 ran 46 tests: 45 passed; one live-attach integration test errored during setup because macOS denied the child-process Mach task-port access required by `sys.remote_exec` (`kern_return_t: 5`). No privilege escalation was attempted. This observation supports the tested helpers and command parsing; it is not evidence of a successful live-attach cycle in this environment or a production-safety guarantee.
+
+## Open source and creative freedom — 2026-10-15
+
+The owner approved **Open Source and the Freedom to Create** for commit, build, and push. Its site release date is 2026-10-15; its original Chinese date, 2026-09-16, is the displayed article date. The latest reviewed prose and requested English quotation are preserved. The final illustration and caption were removed at the owner's request; this article publishes no media.
+
+- [Original Chinese answer](https://www.zhihu.com/question/2083123101873844765/answer/2083780674100773658): the author's account of programming work, open source, and creative freedom. The finite/infinite-game analogy and social conclusions are the author's argument.
+- [The Communist Manifesto, Chapter II](https://www.marxists.org/archive/marx/works/1848/communist-manifesto/ch02.htm) and [edition record](https://www.marxists.org/archive/marx/works/1848/communist-manifesto/index.htm): the quotation about each person's free development comes from Samuel Moore's 1888 English translation in cooperation with Engels.
+- [James P. Carse, Finite and Infinite Games, publisher's edition](https://www.simonandschuster.net/books/Finite-and-Infinite-Games/James-Carse/9781476731711): winning a finite game versus continuing an infinite game.
+- [Value, 共产党员网](https://fuwu.12371.cn/2014/02/17/ARTI1392602984940346_all.shtml): the philosophical definition of value as an object's usefulness in meeting a subject's needs.
+- [Marx, Grundrisse, Notebook VI](https://www.marxists.org/archive/marx/works/1857/grundrisse/ch12.htm): the wording about attractive work and individual self-realization.
+
+At the owner's request, article headers, lists, metadata, and RSS now use the original publication date when supplied, and lists sort newest first by that date. `publishedAt` still records the site release date and controls publication eligibility. Answer adaptations include the original question's title in English in their attribution.

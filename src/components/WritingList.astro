@@ -1,13 +1,13 @@
 ---
 import ArrowCard from './ArrowCard.astro';
-import { articlePath, formatDate, type Article } from '@/lib/writing';
+import { articleDate, articlePath, formatDate, type Article } from '@/lib/writing';
 import { site } from '@/data/site';
 interface Props { articles: Article[]; lang?: 'en' | 'zh'; }
 const { articles, lang = 'en' } = Astro.props;
 ---
 {articles.length ? (
   <ul class="card-list">
-    {articles.map((article) => <li><ArrowCard href={articlePath(article)} title={article.data.title} description={article.data.description} detail={formatDate(article.data.publishedAt!, lang)} /></li>)}
+    {articles.map((article) => <li><ArrowCard href={articlePath(article)} title={article.data.title} description={article.data.description} detail={formatDate(articleDate(article)!, lang)} /></li>)}
   </ul>
 ) : (
   <div class="empty-state">

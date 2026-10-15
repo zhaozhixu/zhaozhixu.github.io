@@ -64,18 +64,18 @@ translationKey: optional-shared-key
 ---
 ```
 
-Visit `/preview/` to review drafts. A draft does not need a publication date. `originalUrl`, `originalPublishedAt`, and `adaptedFrom` record an adaptation’s provenance; they do not set the new article’s publication date.
+Visit `/preview/` to review drafts. A draft does not need a publication date. `originalUrl`, `originalPublishedAt`, and `adaptedFrom` record an adaptation’s provenance. Article headers, writing lists, article metadata, and RSS use `originalPublishedAt` when available, falling back to `publishedAt`. The homepage, writing indexes, and RSS sort newest first by that same date. Draft previews also show the original date when supplied.
 
 Local JPEG and PNG review copies can live in the ignored `.local/draft-media/` directory, using lowercase names with hyphens. Reference them as `/preview/media/<name>.jpg` or `/preview/media/<name>.png` from a Markdown HTML figure. They are served only by the development server and are never automatically copied into the production build. Keep unpublished media out of `public/`. Upon article approval, copy only its approved images into `public/images/writing/<slug>/` and replace the preview URLs in the article. Keep the original review copies in ignored local storage.
 
 After the owner approves an article:
 
 1. Rename the file to remove `_draft-`.
-2. Set `draft: false` and set `publishedAt` to its actual publication date.
+2. Set `draft: false` and set `publishedAt` to its actual site release date. Keep an adaptation’s original date in `originalPublishedAt`.
 3. Run `npm run build` and review the generated page, metadata, and RSS.
 4. Review `git status` before committing. Publication to GitHub is a separate approval step.
 
-Undated published entries fail validation. Future-dated entries remain hidden until a build on or after their date. Drafts are excluded by the same shared filter from the homepage, indexes, public routes, translations, RSS, and sitemap. Development preview routes generate no production paths. Production output is scanned for local draft slugs and representative prose.
+Published entries without `publishedAt` fail validation, even if they have an original date. Entries with a future `publishedAt` remain hidden until a build on or after that date. Drafts are excluded by the same shared filter from the homepage, indexes, public routes, translations, RSS, and sitemap. Development preview routes generate no production paths. Production output is scanned for local draft slugs and representative prose.
 
 Give both translations the same `translationKey`. They may share a slug because IDs include the language. The language switch appears only when both articles are published. There is no promise that every page will be translated.
 
