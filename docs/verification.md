@@ -1,5 +1,11 @@
 # Verification
 
+## Public project list expanded — 2026-10-15
+
+At the owner's request, the Projects page and homepage now include pyvivo and emacs.d alongside LightNet. The descriptions were checked against public revision `5ff2936ddd4129cfc17c4a02e06e4d8f083c0350` of pyvivo and revision `326d7a5355e5032cce3d0099a2ec6a02308f12cd` of emacs.d; claim-level links are recorded in `docs/sources.md`.
+
+`npm run build` passed with zero Astro/TypeScript diagnostics and 45 verified output files. Browser review covered the Projects page at desktop width and the Projects and Home pages in a 390 × 844 viewport. Navigation, project prose, status lines, cards, and links wrap within the narrow layout without horizontal clipping.
+
 ## Emacs article included in the first release — 2026-10-14
 
 Following the owner's explicit approval, `emacs-is-my-ai-coding-workbench.md` is published content with a 2026-10-14 English publication date. Its eight referenced figures are included under `public/images/writing/emacs-is-my-ai-coding-workbench/`. The pre-publication Markdown and original review media remain in ignored local storage. A comparison with the approved draft confirmed the body is unchanged except for image URLs.
