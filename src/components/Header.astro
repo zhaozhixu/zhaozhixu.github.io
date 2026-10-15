@@ -1,0 +1,21 @@
+---
+import Container from './Container.astro';
+import { site } from '@/data/site';
+const path = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Home' }, { href: '/writing/', label: 'Writing' },
+  { href: '/projects/', label: 'Projects' }, { href: '/about/', label: 'About' },
+];
+---
+<header class="site-header">
+  <Container>
+    <div class="header-inner">
+      <a class="brand" href="/">{site.name}<span class="brand-dot" aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation">
+        {links.map(({ href, label }) => (
+          <a href={href} aria-current={(href === '/' ? path === '/' : path.startsWith(href)) ? 'page' : undefined}>{label}</a>
+        ))}
+      </nav>
+    </div>
+  </Container>
+</header>

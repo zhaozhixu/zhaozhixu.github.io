@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import ArrowCard from '@/components/ArrowCard.astro';
+import WritingList from '@/components/WritingList.astro';
+import { projects } from '@/data/projects';
+import { site } from '@/data/site';
+import { publishedWriting } from '@/lib/writing';
+const articles = (await publishedWriting('en')).slice(0, 3);
+---
+<BaseLayout>
+  <Container>
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="eyebrow">Systems, languages &amp; open creation</p>
+      <h1 id="intro-title">Hi, I’m {site.name}.</h1>
+      <p class="lead">I build open systems, programming tools, and ways for people to create together.</p>
+      <p class="intro-copy">I’m interested in software we can understand, take apart, and make our own—from compilers and AI inference to the tools we use every day.</p>
+    </section>
+    <section class="home-section" aria-labelledby="projects-title">
+      <div class="section-heading"><h2 id="projects-title">Selected projects</h2><a href="/projects/">All projects →</a></div>
+      <ul class="card-list">{projects.map((project) => <li><ArrowCard href={`/projects/#${project.id}`} title={project.name} description={project.description} detail={project.status} /></li>)}</ul>
+    </section>
+    <section class="home-section" aria-labelledby="writing-title">
+      <div class="section-heading"><h2 id="writing-title">Writing</h2><a href="/writing/">All writing →</a></div>
+      <WritingList articles={articles} />
+    </section>
+    <section class="home-section" aria-labelledby="elsewhere-title">
+      <div class="section-heading"><h2 id="elsewhere-title">Elsewhere</h2></div>
+      <p class="intro-copy">Code, experiments, and conversations about making better tools.</p>
+      <div class="text-links"><a href={site.github}>GitHub ↗</a><a href={site.zhihu}>Zhihu ↗</a><a href="/about/">More about me →</a></div>
+    </section>
+  </Container>
+</BaseLayout>

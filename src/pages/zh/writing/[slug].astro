@@ -1,0 +1,9 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import { publishedWriting } from '@/lib/writing';
+export async function getStaticPaths() {
+  return (await publishedWriting('zh')).map((article) => ({ params: { slug: article.data.slug }, props: { article } }));
+}
+const { article } = Astro.props;
+---
+<ArticleLayout article={article} />

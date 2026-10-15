@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+# Editor backups, autosaves, locks, and undo history can contain unpublished prose.
+*~
+\#*\#
+.\#*
+*.swp
+*.swo
+.undo-tree/
+.env
+.env.*
+.agent-shell/
+private-sources/
+CODEX_SITE_BUNDLE/
+*.zip
+# Unapproved prose stays out of the public repository as well as the build.
+src/content/writing/**/_draft-*.md
+editorial-review.local.md
+.qa/
+.local/

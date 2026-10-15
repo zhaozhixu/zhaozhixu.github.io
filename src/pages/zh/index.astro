@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import { site } from '@/data/site';
+---
+<BaseLayout title="中文" description="Zhixu Zhao 的项目与中文写作。" lang="zh">
+  <Container>
+    <p class="eyebrow">中文</p><h1>你好，我是 {site.name}。</h1>
+    <div class="prose"><p>我关注开放系统、编程语言，以及让人们共同创作的工具。我喜欢能够理解、拆解，并按自己的想法改造的软件。</p><p>这里会逐步整理我的中文文章。现有写作可以在知乎找到，我使用的名字是 Favoryoung。</p></div>
+    <div class="text-links home-section"><a href="/zh/writing/">中文写作 →</a><a href={site.zhihu}>知乎 ↗</a><a href="/" lang="en">English home →</a></div>
+  </Container>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import Container from './Container.astro';
+import { site } from '@/data/site';
+---
+<footer class="site-footer">
+  <Container>
+    <div class="footer-main">
+      <span>© {new Date().getUTCFullYear()} {site.name}</span>
+      <div class="theme-controls" role="group" aria-label="Color theme">
+        <button type="button" data-theme="light" aria-label="Light theme" aria-pressed="false" title="Light theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+        </button>
+        <button type="button" data-theme="dark" aria-label="Dark theme" aria-pressed="false" title="Dark theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+        </button>
+        <button type="button" data-theme="system" aria-label="System theme" aria-pressed="true" title="System theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href={site.github}>GitHub</a><a href={site.zhihu}>Zhihu</a><a href="/rss.xml">RSS</a>
+      <span class="theme-credit">Built with <a href="https://github.com/markhorn-dev/astro-nano">Astro Nano</a></span>
+    </div>
+  </Container>
+</footer>
+<script>
+  const preference = window.matchMedia('(prefers-color-scheme: dark)');
+  let selected = document.documentElement.dataset.themePreference || 'system';
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-theme]');
+  function applyTheme() {
+    const dark = selected === 'dark' || (selected === 'system' && preference.matches);
+    document.documentElement.classList.toggle('dark', dark);
+    document.documentElement.dataset.themePreference = selected;
+    for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.theme === selected));
+  }
+  for (const button of buttons) button.addEventListener('click', () => {
+    selected = button.dataset.theme || 'system';
+    try { localStorage.setItem('theme', selected); } catch { /* In-memory selection still works. */ }
+    applyTheme();
+  });
+  preference.addEventListener('change', applyTheme);
+  applyTheme();
+</script>

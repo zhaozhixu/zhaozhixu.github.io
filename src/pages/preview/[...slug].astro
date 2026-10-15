@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import { previewPath, type Article } from '@/lib/writing';
+export async function getStaticPaths() {
+  // This route has no production paths, regardless of environment flags or frontmatter.
+  if (!import.meta.env.DEV) return [];
+  const drafts = (await getCollection('writing')).filter(({ data }) => data.draft);
+  return [
+    { params: { slug: undefined }, props: { drafts } },
+    ...drafts.map((article) => ({ params: { slug: `${article.data.lang}/${article.data.slug}` }, props: { article } })),
+  ];
+}
+interface Props { article?: Article; drafts?: Article[]; }
+const { article, drafts = [] } = Astro.props;
+---
+{article ? <ArticleLayout article={article} preview /> : (
+  <BaseLayout title="Local drafts" noindex>
+    <Container><h1>Local drafts</h1><p>Only available with npm run dev. These pages are never emitted by a production build.</p>
+      <ul>{drafts.map((draft) => <li><a href={previewPath(draft)}>{draft.data.title}</a></li>)}</ul>
+    </Container>
+  </BaseLayout>
+)}

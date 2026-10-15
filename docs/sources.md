@@ -1,0 +1,36 @@
+# Source record
+
+Checked against public repositories on 2026-10-08. These are evidence for the conservative project descriptions, not independent reproductions of the projects’ tests. Recheck before changing or publishing capability claims.
+
+| Project | Revision | Primary evidence | Site claims supported |
+| --- | --- | --- | --- |
+| Astro Nano | `66aa017d614828ba5dba02a9e51a1a714850ad31` | [Theme repository](https://github.com/markhorn-dev/astro-nano/tree/66aa017d614828ba5dba02a9e51a1a714850ad31) | Layout, components, typography, theme controls; original MIT notice retained. |
+| LightNet | `c576fcf9e13ae3b012f5e8a751f946c86d6af9fd` | [README](https://github.com/zhaozhixu/LightNet/blob/c576fcf9e13ae3b012f5e8a751f946c86d6af9fd/README.md) | Earlier neural-network optimization framework for different backends; build instructions use historical dependencies. No claim that those instructions were tested against current toolchains. |
+
+## Publishing infrastructure
+
+Rechecked the official deployment guide and the remaining project's public README on 2026-10-14. The manual workflow uses the guide's current action versions and runs the local release checks before uploading the site.
+
+- [Astro content collections](https://docs.astro.build/en/guides/content-collections/): current loader API, `astro/zod`, generated routes, and language-qualified IDs.
+- [Astro GitHub Pages](https://docs.astro.build/en/guides/deploy/github/): official action and user-site root URL. The local workflow intentionally uses manual dispatch only.
+- [Astro Nano listing](https://astro.build/themes/details/astronano/): owner-selected theme. No demo employer names, sample posts, marketing claims, or sample images are retained.
+
+## First-essay research
+
+The complete Chinese original was read from the separately supplied private bundle. The Chinese source remains outside the public repository. The owner approved the English adaptation and its eight selected figures for the first release on 2026-10-14. The author’s firsthand experiences are attributed to that source; upstream checks establish only the public API and project status.
+
+- [agent-shell README](https://github.com/xenodium/agent-shell/blob/d9493d8921a6ade0c3a4c561db092803f0595e83/README.org) and [source](https://github.com/xenodium/agent-shell/blob/d9493d8921a6ade0c3a4c561db092803f0595e83/agent-shell.el): ACP agent support, transcripts, and `agent-shell-transcript-file-path-function` (no arguments; full path or nil).
+- [Issue #734](https://github.com/xenodium/agent-shell/issues/734) and [PR #735](https://github.com/xenodium/agent-shell/pull/735): recognizable output errors after normal end-turn; the proposed retry PR is closed and not merged.
+- [lark-cli](https://github.com/larksuite/cli): public CLI reference only. The author’s custom bridge is not represented as publicly released.
+- [GNU Emacs manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/Invoking-emacsclient.html): `emacsclient --eval`. The new example expressions are illustrative and were not executed in the author’s running Emacs session.
+- DSH revision `5badb15009ae1756c3afe0ae0cef1faafc290ccc`: [README](https://github.com/deepseek-ai/deepseek-harness/blob/5badb15009ae1756c3afe0ae0cef1faafc290ccc/README.md), [retry plugin](https://github.com/deepseek-ai/deepseek-harness/blob/5badb15009ae1756c3afe0ae0cef1faafc290ccc/packages/llm/llm-retry/README.md), [ACP server](https://github.com/deepseek-ai/deepseek-harness/blob/5badb15009ae1756c3afe0ae0cef1faafc290ccc/packages/acp/acp/README.md). Developer preview, request recovery inside agent turns, automation-focused ACP with limited interactive presentation. No tested agent-shell integration or general hot-reload guarantee is claimed.
+
+### Media authorization update — 2026-10-09
+
+The owner confirmed that the supplied Emacs article images are theirs and explicitly requested their inclusion in the local draft. Eight figures are served from ignored local storage, with English captions and alt text. At the owner's subsequent request, built-in image_gen removed the “知乎 @Favoryoung” watermark from seven figures; the GNU illustration needed no cleanup. Cleaned PNGs are saved separately from preserved original JPEGs. This updates the original media-exclusion decision; it does not publish the article or its media.
+
+The owner also requested Lark naming throughout the essay and English translations inside the images. Five localized screenshots were created with built-in image_gen, using explicit English translations and keeping technical identifiers, code, and equations. The article identifies the screenshots as translated adaptations; these are not new captures of an English-language app. Original and watermark-cleaned versions remain available in ignored local storage.
+
+### First-release authorization — 2026-10-14
+
+The owner explicitly requested that the current Emacs article be included in the first release. The approved Markdown is now public content, and exactly the eight images referenced by that version were copied into `public/images/writing/emacs-is-my-ai-coding-workbench/`. Image bytes are unchanged from the reviewed copies. The English publication date is 2026-10-14; the source article's 2026-10-02 date remains separate. The author's latest wording, passion, captions, and left-side table of contents are preserved.

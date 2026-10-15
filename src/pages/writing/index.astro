@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import WritingList from '@/components/WritingList.astro';
+import { publishedWriting } from '@/lib/writing';
+const articles = await publishedWriting('en');
+---
+<BaseLayout title="Writing" description="Essays on systems, programming languages, AI and software, and open creation.">
+  <Container>
+    <div class="page-intro"><p class="eyebrow">Notes from the workbench</p><h1>Writing</h1><p class="page-description">Longer thoughts on the systems we build, the tools we use, and the freedom to change them.</p></div>
+    <ul class="topics"><li>Systems</li><li>Programming Languages</li><li>AI &amp; Software</li><li>Open Creation</li></ul>
+    <WritingList articles={articles} />
+    <div class="text-links home-section"><a href="/rss.xml">Subscribe via RSS</a><a href="/zh/writing/" lang="zh-CN">中文写作 →</a></div>
+  </Container>
+</BaseLayout>

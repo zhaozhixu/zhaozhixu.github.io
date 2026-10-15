@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import { projects } from '@/data/projects';
+---
+<BaseLayout title="Projects" description="Open-source work by Zhixu Zhao, including LightNet, a neural-network optimization framework.">
+  <Container>
+    <div class="page-intro"><p class="eyebrow">Open-source work</p><h1>Projects</h1><p class="page-description">Systems that are easier to inspect, change, and build on.</p></div>
+    {projects.map((project) => (
+      <section id={project.id} class="project-detail" aria-labelledby={`${project.id}-title`}>
+        <h2 id={`${project.id}-title`}>{project.name}</h2>
+        <p class="status">{project.status} · {project.technologies}</p>
+        <p class="project-purpose">{project.description}</p>
+        <p>{project.problem}</p><p>{project.approach}</p>
+        <p><strong>Implementation.</strong> {project.working}</p>
+        <p><strong>Project status.</strong> {project.limits}</p>
+        <div class="text-links"><a href={project.url}>Repository ↗</a><a href={project.docs}>Documentation ↗</a><a href={project.evidence}>Status &amp; source ↗</a></div>
+      </section>
+    ))}
+  </Container>
+</BaseLayout>

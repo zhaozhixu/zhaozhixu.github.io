@@ -1,0 +1,106 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import LanguageSwitch from '@/components/LanguageSwitch.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import { publishedWriting, articlePath, formatDate, type Article } from '@/lib/writing';
+interface Props { article: Article; preview?: boolean; }
+const { article, preview = false } = Astro.props;
+const { data } = article;
+const { Content, headings } = await render(article);
+const sections = headings.filter(({ depth }) => depth === 2 || depth === 3);
+const showContents = sections.length > 1;
+const contentsLabel = data.lang === 'zh' ? '目录' : 'Contents';
+const translation = !preview && data.translationKey
+  ? (await publishedWriting()).find((other) => other.data.translationKey === data.translationKey && other.data.lang !== data.lang)
+  : undefined;
+const alternates = translation ? [article, translation].map((item) => ({ lang: item.data.lang === 'zh' ? 'zh-CN' : 'en', href: articlePath(item) })) : [];
+---
+<BaseLayout title={data.title} description={data.description} lang={data.lang} noindex={preview} type="article" publishedAt={preview ? undefined : data.publishedAt} updatedAt={data.updatedAt} alternates={alternates}>
+  <Container>
+    {preview && <div class="draft-notice"><strong>Local draft preview.</strong> Unpublished; excluded from the production site. <a href="/preview/">All drafts</a></div>}
+    <div class="article-layout">
+    {showContents && <aside class="article-sidebar">
+      <div class="article-sidebar-sticky">
+        <p class="contents-label">{contentsLabel}</p>
+        <TableOfContents headings={sections} label={contentsLabel} />
+      </div>
+    </aside>}
+    <div class="article-header">
+      <p class="eyebrow">{data.lang === 'zh' ? '文章' : 'Writing'}</p>
+      <h1 class="article-title">{data.title}</h1>
+      <p class="page-description">{data.description}</p>
+      {!preview && data.publishedAt && <p class="article-meta"><time datetime={data.publishedAt.toISOString()}>{formatDate(data.publishedAt, data.lang)}</time>{data.updatedAt && <> · Updated <time datetime={data.updatedAt.toISOString()}>{formatDate(data.updatedAt, data.lang)}</time></>}</p>}
+      {data.tags.length > 0 && <ul class="topics">{data.tags.map((tag) => <li>{tag}</li>)}</ul>}
+    </div>
+    {translation && <LanguageSwitch href={articlePath(translation)} lang={translation.data.lang} />}
+    {showContents && <details class="article-contents-mobile">
+      <summary>{contentsLabel}</summary>
+      <TableOfContents headings={sections} label={contentsLabel} />
+    </details>}
+    <article class="prose"><Content /></article>
+    <div class="home-section small-link"><a href={data.lang === 'zh' ? '/zh/writing/' : '/writing/'}>← {data.lang === 'zh' ? '所有文章' : 'All writing'}</a></div>
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  .article-layout {
+    position: relative;
+  }
+  .article-sidebar {
+    display: none;
+  }
+  .article-contents-mobile {
+    margin-bottom: 32px;
+    padding-block: 13px;
+    border-block: 1px solid var(--line);
+  }
+  summary {
+    width: fit-content;
+    color: var(--fg);
+    cursor: pointer;
+    font: 600 13px/1.7 var(--sans);
+  }
+  summary::marker {
+    color: var(--accent);
+  }
+  details[open] summary {
+    margin-bottom: 14px;
+  }
+  @media (min-width: 1280px) {
+    .article-contents-mobile {
+      display: none;
+    }
+    .article-sidebar {
+      display: block;
+      position: absolute;
+      inset-block: 0;
+      inset-inline-end: calc(100% + 48px);
+      width: 220px;
+    }
+    .article-sidebar-sticky {
+      position: sticky;
+      top: 7rem;
+      max-height: calc(100dvh - 9rem);
+      overflow-y: auto;
+      padding: 6px;
+      margin: -6px;
+      scrollbar-width: thin;
+    }
+    .contents-label {
+      margin: 0 0 14px;
+      color: var(--fg);
+      font: 600 11px/1.7 var(--sans);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+  }
+  @media print {
+    .article-sidebar,
+    .article-contents-mobile {
+      display: none;
+    }
+  }
+</style>

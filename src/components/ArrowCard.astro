@@ -1,0 +1,14 @@
+---
+interface Props { href: string; title: string; description: string; detail?: string; }
+const { href, title, description, detail } = Astro.props;
+---
+<a href={href} class="arrow-card">
+  <div>
+    <span class="card-title">{title}</span>
+    <span class="card-description">{description}</span>
+    {detail && <span class="card-detail">{detail}</span>}
+  </div>
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+  </svg>
+</a>
